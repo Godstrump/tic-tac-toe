@@ -10,9 +10,12 @@ const buttonStyle = {
   marginBottom: "16px",
   width: "80px",
   height: "40px",
-  backgroundColor: "#8acaca",
+  backgroundColor: "#f33610",
   color: "white",
   fontSize: "16px",
+  outline: "none",
+  border: "none",
+  borderRadius: "6px",
 };
 
 const boardStyle = {
@@ -36,6 +39,14 @@ const instructionsStyle = {
   marginBottom: "5px",
   fontWeight: "bold",
   fontSize: "16px",
+};
+
+const status = {
+  marginTop: "5px",
+  marginBottom: "5px",
+  fontWeight: "bold",
+  fontSize: "16px",
+  color: "green",
 };
 
 const Board = () => {
@@ -157,9 +168,13 @@ const Board = () => {
       <div id="statusArea" className="status" style={instructionsStyle}>
         Next player: <span>{isXNxt ? x : o}</span>
       </div>
-      <div id="winnerArea" className="winner" style={instructionsStyle}>
-        Winner: <span>{winner}</span>
-      </div>
+      {winner && winner !== "" ? (
+        <div id="winnerArea" className="winner" style={status}>
+          Winner: <span>{winner}</span>
+        </div>
+      ) : (
+        ""
+      )}
       <button onClick={reset} style={buttonStyle}>
         Reset
       </button>
